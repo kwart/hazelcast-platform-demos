@@ -1,14 +1,6 @@
 name: PR Builder
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
-    paths-ignore:
-      - '**.md'
+on: [push, pull_request]
 
 jobs:
   build:
@@ -20,4 +12,4 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -B  -U clean install -Prelease
+        run: mvn -B  clean install -Prelease
