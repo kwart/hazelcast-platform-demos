@@ -1,9 +1,6 @@
 name: Build latest OS and EE image
 
-on:
-  pull_request:
-    paths-ignore:
-      - '**.md'
+on: [push, pull_request]
 
 jobs:
   build:
