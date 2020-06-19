@@ -1,15 +1,23 @@
-name: Build latest OS and EE image
+name: PR Builder
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 1.8
+      - name: Set up Java
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 11
       - name: Build with Maven
         run: mvn -B  -U clean install -Prelease
